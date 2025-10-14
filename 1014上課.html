@@ -36,7 +36,9 @@
 </nav>
     
 
-    <!-- 主視覺區塊 -->
+  
+
+<!-- 主視覺區塊 -->
 <section class="bg-light text-center py-5">
     <div class="container">
         <h1 class="display-5 fw-bold">歡迎來到我的 RWD 範例網站</h1>
@@ -47,21 +49,55 @@
     </div>
 </section>
 
+<div class="modal" id="exampleModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">了解</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h1>更多。</h1>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-
-   <!-- 三欄內容區 -->
+<!-- 三欄內容區 -->
 <section class="container my-5">
     <div class="row text-center">
         <div class="col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">特色一</h5>
+                    <h5 class="card-title">蠟筆小新</h5>
                     <p class="card-text">Bootstrap 提供了簡單好用的響應式網格系統。</p>
-                    <p class="text-muted small">透過 col 與 row 結構，你可以輕鬆建立彈性排版，不論在手機或桌機上都能完美呈現。</p>
+                    <p class="text-muted small"><img src="img/小新.jpeg"width="100%"></p>
+                    <button type="button" class="btn btn-primary btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#xin">
+                    了解更多
+                    </button>                   
+<div class="modal" id="xin" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">蠟筆小新</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <h1>外表特徵是濃密的眉毛以及短短的和尚髮型，與祖父銀之介十分相似。</h1>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+                </div>
+                </div>
                 </div>
             </div>
         </div>
+        
 
         <div class="col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
