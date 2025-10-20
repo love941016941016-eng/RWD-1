@@ -1,26 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RWD</title>
+    <title>野原一家介紹網站</title>
+
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+          crossorigin="anonymous">
+
     <style>
         .custom-navbar {
-    background-color: #4A148C; /* 紫色 */
-    }
-    .custom-navbar {
-    background: linear-gradient(90deg, #4A148C, #880E4F);
-}
+            background: linear-gradient(90deg, #4A148C, #880E4F);
+        }
     </style>
-    <!-- Bootstrap 5 CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
+
 <body>
-    
-    <!-- 導覽列 -->
+
+<!-- 導覽列 -->
 <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
     <div class="container">
-        <a class="navbar-brand" href="#">我的網站</a>
+        <a class="navbar-brand" href="#">蠟筆小新介紹網站</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -34,100 +37,164 @@
         </div>
     </div>
 </nav>
-    
 
-  
-
-<!-- 主視覺區塊 -->
+<!-- 主視覺 -->
 <section class="bg-light text-center py-5">
     <div class="container">
-        <h1 class="display-5 fw-bold">歡迎來到我的 RWD 範例網站</h1>
+        <h1 class="display-5 fw-bold">歡迎來到野原一家介紹網站</h1>
         <p class="lead text-muted">這是一個使用 Bootstrap 建立的簡單響應式頁面。</p>
-        <button type="button" class="btn btn-primary btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-primary btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#introModal">
             了解更多
         </button>
     </div>
 </section>
 
-<div class="modal" id="exampleModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">了解</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <h1>更多。</h1>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 三欄內容區 -->
+<!-- 角色卡片區 -->
 <section class="container my-5">
     <div class="row text-center">
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">蠟筆小新</h5>
-                    <p class="card-text">Bootstrap 提供了簡單好用的響應式網格系統。</p>
-                    <p class="text-muted small"><img src="img/小新.jpeg"width="100%"></p>
-                    <button type="button" class="btn btn-primary btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#xin">
-                    了解更多
-                    </button>                   
-<div class="modal" id="xin" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">蠟筆小新</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <h1>外表特徵是濃密的眉毛以及短短的和尚髮型，與祖父銀之介十分相似。</h1>
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>
-            </div>
-        </div>
-        
 
+        <!-- 廣志 -->
         <div class="col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">特色二</h5>
-                    <p class="card-text">使用預設的排版與按鈕樣式即可快速開發。</p>
-                    <p class="text-muted small">Bootstrap 提供大量內建元件，例如按鈕、表單、導覽列，讓開發者節省時間。</p>
+                    <h5 class="card-title">廣志</h5>
+                    <p class="card-text">野原一家的爸爸</p>
+                    <img src="img/廣志.webp" width="50%" class="img-fluid mb-3">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hiroshiModal">
+                        了解更多
+                    </button>
                 </div>
             </div>
         </div>
 
+        <!-- 美芽 -->
         <div class="col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">特色三</h5>
-                    <p class="card-text">自動適應手機、平板與桌面裝置。</p>
-                    <p class="text-muted small">只要設定適當的 col-breakpoint（如 col-md-4），就能讓版面在不同裝置下自動調整。</p>
+                    <h5 class="card-title">美芽</h5>
+                    <p class="card-text">野原一家的媽媽</p>
+                    <img src="img/美芽2.webp" width="50%" class="img-fluid mb-3">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#misaeModal">
+                        了解更多
+                    </button>
                 </div>
             </div>
         </div>
+
+        <!-- 小新 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">小新</h5>
+                    <p class="card-text">野原一家的長子</p>
+                    <img src="img/小新.jpeg" width="50%" class="img-fluid mb-3">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#xinModal">
+                        了解更多
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 小葵 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">小葵</h5>
+                    <p class="card-text">野原一家的長女</p>
+                    <img src="img/小葵.jpeg" width="50%" class="img-fluid mb-3">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#qaoModal">
+                        了解更多
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 小白 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">小白</h5>
+                    <p class="card-text">野原一家的寵物狗</p>
+                    <img src="img/小白.jpeg" width="50%" class="img-fluid mb-3">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shiroModal">
+                        了解更多
+                    </button>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
-    
 
-    <!-- 頁尾 -->
-    <footer class="bg-dark text-white text-center py-3">
-        <p class="mb-0">© 2025 我的網站. All rights reserved.</p>
-    </footer>
+<!-- 頁尾 -->
+<footer class="bg-dark text-white text-center py-3">
+    <p class="mb-0">© 2025 我的網站. All rights reserved.</p>
+</footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<!-- 所有 Modal 區（放在 body 結尾） -->
+<!-- 首頁了解更多 -->
+<div class="modal fade" id="introModal" tabindex="-1" aria-labelledby="introLabel" aria-hidden="true">
+  <div class="modal-dialog"><div class="modal-content">
+    <div class="modal-header"><h5 class="modal-title" id="introLabel">網站介紹</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">這是介紹蠟筆小新與野原一家的網站，使用 Bootstrap 建立，支援手機與電腦自動排版。</div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button></div>
+  </div></div>
+</div>
+
+<!-- 廣志 -->
+<div class="modal fade" id="hiroshiModal" tabindex="-1" aria-labelledby="hiroshiLabel" aria-hidden="true">
+  <div class="modal-dialog"><div class="modal-content">
+    <div class="modal-header"><h5 class="modal-title" id="hiroshiLabel">廣志</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">野原廣志是家庭的支柱，個性溫和但有點小氣，常被小新吐槽。腳氣是他的最大弱點。</div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button></div>
+  </div></div>
+</div>
+
+<!-- 美芽 -->
+<div class="modal fade" id="misaeModal" tabindex="-1" aria-labelledby="misaeLabel" aria-hidden="true">
+  <div class="modal-dialog"><div class="modal-content">
+    <div class="modal-header"><h5 class="modal-title" id="misaeLabel">美芽</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">野原美芽是全職媽媽，個性火爆卻充滿愛心，常因小新的惡作劇抓狂。</div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button></div>
+  </div></div>
+</div>
+
+<!-- 小新 -->
+<div class="modal fade" id="xinModal" tabindex="-1" aria-labelledby="xinLabel" aria-hidden="true">
+  <div class="modal-dialog"><div class="modal-content">
+    <div class="modal-header"><h5 class="modal-title" id="xinLabel">小新</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">蠟筆小新，本名野原新之助，是一位調皮但善良的幼稚園小孩，喜歡美女與巧克力餅乾。</div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button></div>
+  </div></div>
+</div>
+
+<!-- 小葵 -->
+<div class="modal fade" id="qaoModal" tabindex="-1" aria-labelledby="qaoLabel" aria-hidden="true">
+  <div class="modal-dialog"><div class="modal-content">
+    <div class="modal-header"><h5 class="modal-title" id="qaoLabel">小葵</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">小新的妹妹，雖然年紀小，但已經展現出愛美與撒嬌的特質。</div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button></div>
+  </div></div>
+</div>
+
+<!-- 小白 -->
+<div class="modal fade" id="shiroModal" tabindex="-1" aria-labelledby="shiroLabel" aria-hidden="true">
+  <div class="modal-dialog"><div class="modal-content">
+    <div class="modal-header"><h5 class="modal-title" id="shiroLabel">小白</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">小白是家裡的寵物狗，聰明乖巧，經常被小新拖下水但仍忠心耿耿。</div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button></div>
+  </div></div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
 </html>
