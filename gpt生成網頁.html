@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEON GEAR｜Minimal Tech Accessories</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+    :root {
+      --bg: #fff;
+      --text: #111;
+      --gray: #777;
+      --accent: #00ff99; /* 可改成亮橘 #ff6600 */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      border-bottom: 1px solid #eee;
+      background: rgba(255,255,255,0.8);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      margin-left: 40px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: #111;
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: #aaa;
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+
+    .hero button {
+      background-color: var(--accent);
+      color: #111;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .hero button:hover {
+      transform: scale(1.05);
+    }
+
+    /* Product Section */
+    .products {
+      padding: 80px 60px;
+      text-align: center;
+    }
+
+    .products h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    .product {
+      background: #f9f9f9;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.4s, box-shadow 0.3s;
+    }
+
+    .product img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .product:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .product h3 {
+      margin: 15px 0 5px;
+      font-size: 1.1rem;
+    }
+
+    .product p {
+      color: var(--gray);
+      margin-bottom: 15px;
+    }
+
+    /* About Section */
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 100px 60px;
+      background: #111;
+      color: white;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+      padding: 20px;
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+
+    .about-text p {
+      line-height: 1.7;
+      color: #ccc;
+    }
+
+    .about-img {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-img img {
+      width: 100%;
+      border-radius: 20px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      background: #f5f5f5;
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 30px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">NEON GEAR</div>
+    <nav>
+      <a href="#">首頁</a>
+      <a href="#">產品</a>
+      <a href="#">品牌理念</a>
+      <a href="#">聯絡我們</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Make Your Tech Glow</h1>
+    <p>極簡設計，霓虹靈魂 — 專屬你的時尚科技配件。</p>
+    <button>立即選購</button>
+  </section>
+
+  <section class="products">
+    <h2>熱銷產品</h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1606813902911-cb2a5179c7d2?auto=format&fit=crop&w=800&q=80" alt="Phone Case">
+        <h3>霓虹防摔手機殼</h3>
+        <p>NT$890</p>
+      </div>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1606813902911-8a6e5a02b1e0?auto=format&fit=crop&w=800&q=80" alt="AirPods Case">
+        <h3>AirPods 霓虹保護套</h3>
+        <p>NT$690</p>
+      </div>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1602524204769-14b95e6e9d5f?auto=format&fit=crop&w=800&q=80" alt="Watch Band">
+        <h3>Apple Watch 霓虹錶帶</h3>
+        <p>NT$990</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="about-text">
+      <h2>關於 NEON GEAR</h2>
+      <p>
+        我們相信，科技配件不只是功能性產品，更是風格的延伸。  
+        NEON GEAR 將極簡設計與螢光元素融合，打造出屬於現代潮流的科技配件。  
+        從材質選擇到設計細節，每一件產品都象徵你的個性與態度。
+      </p>
+    </div>
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1620912189865-730b3bff7ef2?auto=format&fit=crop&w=900&q=80" alt="About NEON GEAR">
+    </div>
+  </section>
+
+  <footer>
+    © 2025 NEON GEAR — All Rights Reserved. | <a href="#">Privacy Policy</a>
+  </footer>
+</body>
+</html>
