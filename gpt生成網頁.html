@@ -11,7 +11,7 @@
       --bg: #fff;
       --text: #111;
       --gray: #777;
-      --accent: #00ff99; /* 可改成亮橘 #ff6600 */
+      --accent: #00ff99;
     }
 
     * {
@@ -24,6 +24,7 @@
     body {
       background-color: var(--bg);
       color: var(--text);
+      scroll-behavior: smooth;
     }
 
     header {
@@ -35,6 +36,7 @@
       background: rgba(255,255,255,0.8);
       position: sticky;
       top: 0;
+      z-index: 10;
       backdrop-filter: blur(10px);
     }
 
@@ -45,15 +47,38 @@
     }
 
     nav a {
-      margin-left: 40px;
+      margin-left: 30px;
       text-decoration: none;
       color: var(--text);
       font-weight: 500;
       transition: color 0.3s;
+      cursor: pointer;
     }
 
     nav a:hover {
       color: var(--accent);
+    }
+
+    .cart-icon {
+      position: relative;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: var(--accent);
+      color: #111;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     /* Hero Section */
@@ -140,6 +165,21 @@
       margin-bottom: 15px;
     }
 
+    .product button {
+      background: var(--accent);
+      border: none;
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .product button:hover {
+      transform: scale(1.05);
+    }
+
     /* About Section */
     .about {
       display: flex;
@@ -177,7 +217,74 @@
       border-radius: 20px;
     }
 
-    /* Footer */
+    /* Cart Modal */
+    .cart-modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.3s;
+      z-index: 100;
+    }
+
+    .cart-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .cart-content {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      width: 400px;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .cart-content h3 {
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+    }
+
+    .cart-item span {
+      font-size: 0.95rem;
+    }
+
+    .cart-item button {
+      background: transparent;
+      border: none;
+      color: #999;
+      cursor: pointer;
+    }
+
+    .close-cart {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .cart-total {
+      text-align: right;
+      margin-top: 20px;
+      font-weight: 600;
+    }
+
     footer {
       text-align: center;
       padding: 40px;
@@ -186,19 +293,10 @@
       font-size: 0.9rem;
     }
 
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
     @media (max-width: 768px) {
-      header {
-        padding: 15px 30px;
-      }
-
-      .hero h1 {
-        font-size: 2.5rem;
-      }
+      header { padding: 15px 30px; }
+      .hero h1 { font-size: 2.5rem; }
+      .cart-content { width: 90%; }
     }
   </style>
 </head>
@@ -206,41 +304,44 @@
   <header>
     <div class="logo">NEON GEAR</div>
     <nav>
-      <a href="#">首頁</a>
-      <a href="#">產品</a>
-      <a href="#">品牌理念</a>
-      <a href="#">聯絡我們</a>
+      <a id="homeBtn">首頁</a>
+      <a id="productBtn">產品</a>
+      <a id="aboutBtn">品牌理念</a>
+      <span class="cart-icon" id="cartIcon">🛒<span class="cart-count" id="cartCount">0</span></span>
     </nav>
   </header>
 
-  <section class="hero">
+  <section class="hero" id="hero">
     <h1>Make Your Tech Glow</h1>
     <p>極簡設計，霓虹靈魂 — 專屬你的時尚科技配件。</p>
-    <button>立即選購</button>
+    <button id="shopNow">立即選購</button>
   </section>
 
-  <section class="products">
+  <section class="products" id="products">
     <h2>熱銷產品</h2>
     <div class="product-grid">
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1606813902911-cb2a5179c7d2?auto=format&fit=crop&w=800&q=80" alt="Phone Case">
+      <div class="product" data-name="霓虹防摔手機殼" data-price="890">
+        <img src="https://images.unsplash.com/photo-1606813902911-cb2a5179c7d2?auto=format&fit=crop&w=800&q=80" alt="">
         <h3>霓虹防摔手機殼</h3>
         <p>NT$890</p>
+        <button class="addCartBtn">加入購物車</button>
       </div>
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1606813902911-8a6e5a02b1e0?auto=format&fit=crop&w=800&q=80" alt="AirPods Case">
+      <div class="product" data-name="AirPods 霓虹保護套" data-price="690">
+        <img src="https://images.unsplash.com/photo-1606813902911-8a6e5a02b1e0?auto=format&fit=crop&w=800&q=80" alt="">
         <h3>AirPods 霓虹保護套</h3>
         <p>NT$690</p>
+        <button class="addCartBtn">加入購物車</button>
       </div>
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1602524204769-14b95e6e9d5f?auto=format&fit=crop&w=800&q=80" alt="Watch Band">
+      <div class="product" data-name="Apple Watch 霓虹錶帶" data-price="990">
+        <img src="https://images.unsplash.com/photo-1602524204769-14b95e6e9d5f?auto=format&fit=crop&w=800&q=80" alt="">
         <h3>Apple Watch 霓虹錶帶</h3>
         <p>NT$990</p>
+        <button class="addCartBtn">加入購物車</button>
       </div>
     </div>
   </section>
 
-  <section class="about">
+  <section class="about" id="about">
     <div class="about-text">
       <h2>關於 NEON GEAR</h2>
       <p>
@@ -250,12 +351,71 @@
       </p>
     </div>
     <div class="about-img">
-      <img src="https://images.unsplash.com/photo-1620912189865-730b3bff7ef2?auto=format&fit=crop&w=900&q=80" alt="About NEON GEAR">
+      <img src="https://images.unsplash.com/photo-1620912189865-730b3bff7ef2?auto=format&fit=crop&w=900&q=80" alt="">
     </div>
   </section>
 
   <footer>
-    © 2025 NEON GEAR — All Rights Reserved. | <a href="#">Privacy Policy</a>
+    © 2025 NEON GEAR — All Rights Reserved.
   </footer>
+
+  <!-- 購物車視窗 -->
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-content">
+      <span class="close-cart" id="closeCart">&times;</span>
+      <h3>🛍️ 購物車</h3>
+      <div id="cartItems"></div>
+      <div class="cart-total" id="cartTotal">總金額：NT$0</div>
+    </div>
+  </div>
+
+  <script>
+    const cart = [];
+    const cartCount = document.getElementById("cartCount");
+    const cartItems = document.getElementById("cartItems");
+    const cartTotal = document.getElementById("cartTotal");
+    const cartModal = document.getElementById("cartModal");
+
+    document.querySelectorAll(".addCartBtn").forEach(btn => {
+      btn.addEventListener("click", e => {
+        const product = e.target.closest(".product");
+        const name = product.dataset.name;
+        const price = parseInt(product.dataset.price);
+
+        cart.push({ name, price });
+        updateCart();
+      });
+    });
+
+    function updateCart() {
+      cartCount.textContent = cart.length;
+      cartItems.innerHTML = "";
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        total += item.price;
+        const div = document.createElement("div");
+        div.classList.add("cart-item");
+        div.innerHTML = `<span>${item.name}</span><span>NT$${item.price}</span><button onclick="removeItem(${index})">✕</button>`;
+        cartItems.appendChild(div);
+      });
+
+      cartTotal.textContent = `總金額：NT$${total}`;
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    document.getElementById("cartIcon").onclick = () => cartModal.classList.add("active");
+    document.getElementById("closeCart").onclick = () => cartModal.classList.remove("active");
+    cartModal.addEventListener("click", e => { if (e.target === cartModal) cartModal.classList.remove("active"); });
+
+    document.getElementById("homeBtn").onclick = () => window.scrollTo({top: 0, behavior: "smooth"});
+    document.getElementById("productBtn").onclick = () => document.getElementById("products").scrollIntoView({behavior: "smooth"});
+    document.getElementById("aboutBtn").onclick = () => document.getElementById("about").scrollIntoView({behavior: "smooth"});
+    document.getElementById("shopNow").onclick = () => document.getElementById("products").scrollIntoView({behavior: "smooth"});
+  </script>
 </body>
 </html>
