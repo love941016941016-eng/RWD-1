@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>國立勤益科技大學 資訊管理系</title>
+<style>
+:root{--brand:#0b5aa8;--accent:#f2a900;--muted:#666;--card:#ffffff}
+*{box-sizing:border-box}
+body{font-family:"微軟正黑體","Noto Sans TC",sans-serif;margin:0;color:#222;background:#f4f6fb}
+header{background:linear-gradient(90deg,var(--brand),#0a6fbf);color:#fff;padding:18px 20px;position:sticky;top:0;z-index:40}
+.container{max-width:1200px;margin:0 auto;padding:18px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{width:58px;height:58px;border-radius:8px;object-fit:cover}
+nav{margin-top:8px}
+nav ul{display:flex;gap:12px;list-style:none;padding:0;margin:0;align-items:center}
+nav a{color:#fff;text-decoration:none;padding:8px 12px;border-radius:8px}
+nav a.active{background:rgba(255,255,255,0.12)}
+.hero{padding:28px 0}
+.hero-card{background:var(--card);border-radius:12px;padding:22px;display:flex;gap:20px;align-items:center;box-shadow:0 6px 20px rgba(10,20,40,0.06)}
+.hero-card h2{margin:0}
+.hero-actions{margin-left:auto;display:flex;gap:8px}
+.btn{background:var(--accent);border:none;padding:10px 14px;border-radius:8px;cursor:pointer;color:#111;font-weight:600}
+main{padding:18px 0}
+.grid{display:grid;grid-template-columns:1fr 340px;gap:18px}
+.card{background:var(--card);padding:14px;border-radius:10px;box-shadow:0 6px 16px rgba(12,24,48,0.04)}
+.faculty-toolbar{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.search{flex:1}
+.search input{width:100%;padding:10px;border-radius:8px;border:1px solid #e4e7ef}
+.faculty-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.faculty-card{background:#fff;padding:14px;border-radius:10px;text-align:center;cursor:pointer;transition:transform .18s,box-shadow .18s}
+.faculty-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(10,20,40,0.08)}
+.faculty-card img{width:110px;height:110px;border-radius:50%;object-fit:cover;margin-bottom:8px}
+.faculty-card h4{margin:6px 0 0 0}
+.faculty-card p{margin:6px 0;color:var(--muted);font-size:14px}
+.detail{padding:18px}
+.detail-header{display:flex;gap:18px;align-items:flex-start}
+.detail-header img{width:160px;height:160px;border-radius:12px;object-fit:cover}
+.meta p{margin:6px 0}
+.back-link{display:inline-block;margin-bottom:12px;color:var(--brand);cursor:pointer}
+table{width:100%;border-collapse:collapse;margin-top:12px}
+th, td{border:1px solid #ddd;padding:8px;text-align:left}
+th{background:#f2f2f2}
+@media (max-width:1000px){.grid{grid-template-columns:1fr}.faculty-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){nav ul{display:none}header{padding:12px}.faculty-grid{grid-template-columns:1fr}.hero-card{flex-direction:column;align-items:flex-start}}
+footer{background:#0b1220;color:#cbd6ea;padding:18px;margin-top:22px;border-radius:10px}
+/* carousel */
+.carousel{position:relative;overflow:hidden;border-radius:10px;margin-top:12px}
+.carousel-slide{display:flex;transition:transform 0.3s ease}
+.carousel-slide div{min-width:100%;padding:12px;background:#eef3fb;margin-right:6px;border-radius:8px}
+.carousel-controls{position:absolute;top:50%;transform:translateY(-50%);width:100%;display:flex;justify-content:space-between;pointer-events:none}
+.carousel-controls button{pointer-events:auto;background:rgba(0,0,0,0.3);border:none;color:#fff;padding:6px 12px;border-radius:6px;cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+<div class="container" style="display:flex;align-items:center">
+<div class="brand">
+<img src="https://mis.ncut.edu.tw/themes/custom/ncut_subtheme/images/logo.png" alt="NCUT MIS Logo" onerror="this.src='https://via.placeholder.com/58'">
+<div>
+<div style="font-size:18px;font-weight:700">國立勤益科技大學</div>
+<div style="font-size:13px;opacity:.95">資訊管理系 / Department of Information Management</div>
+</div>
+</div>
+<nav style="margin-left:auto">
+<ul>
+<li><a href="#/" data-link class="nav-link active">首頁</a></li>
+<li><a href="#/about" data-link class="nav-link">關於本系</a></li>
+<li><a href="#/faculty" data-link class="nav-link">師資介紹</a></li>
+<li><a href="#/courses" data-link class="nav-link">課程資訊</a></li>
+<li><a href="#/news" data-link class="nav-link">公告</a></li>
+<li><a href="#/contact" data-link class="nav-link">聯絡我們</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main class="container">
+<section class="hero">
+<div class="hero-card">
+<div>
+<h2>資訊管理系 — 官方模擬版</h2>
+<p style="color:var(--muted);margin-top:6px">完整師資、課程、公告互動式展示，模擬 NCUT 官方網站</p>
+</div>
+<div class="hero-actions">
+<button class="btn" onclick="location.hash='#/faculty'">查看師資</button>
+<button class="btn" onclick="location.hash='#/contact'">聯絡我們</button>
+</div>
+</div>
+</section>
+<div class="grid" id="app-grid">
+<div id="content-area"></div>
+<aside style="width:320px">
+<div class="card">
+<h3>快速連結</h3>
+<ul style="padding-left:18px;color:var(--muted)">
+<li><a href="https://nmsd.ncut.edu.tw" target="_blank">校務行政系統</a></li>
+<li><a href="https://recruit.ncut.edu.tw" target="_blank">招生訊息</a></li>
+<li><a href="https://mis.ncut.edu.tw/app/index.php" target="_blank">系上官方網站</a></li>
+<li><a href="#/faculty">師資列表</a></li>
+<li><a href="#/courses">課程列表</a></li>
+<li><a href="#/news">公告資訊</a></li>
+</ul>
+</div>
+<div class="card" style="margin-top:12px">
+<h4>聯絡資訊</h4>
+<p>地址：411030 臺中市太平區中山路二段57號</p>
+<p>TEL: (04)23924505 分機 7911</p>
+<p><a href="https://goo.gl/maps/XYZ" target="_blank">Google 地圖</a></p>
+</div>
+</aside>
+</div>
+</main>
+<footer class="container">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+<div>© 2025 國立勤益科技大學 資訊管理系</div>
+<div style="color:var(--muted);font-size:13px">網站模擬版 • 內容僅供參考</div>
+</div>
+</footer>
+<script>
+const professors=[
+{id:'eric_chang',name:'張裕幸',title:'教授 / 系主任／所長',office:'M405',email:'eric_chang@ncut.edu.tw',ext:'7936',degree:'國立台灣科技大學 資訊管理所 博士',research:'AR、VR、互動裝置設計、AI數據分析、使用者研究、AIoT 智慧物聯網應用',img:'https://via.placeholder.com/320?text=張裕幸',courses:['智慧物聯網','資料分析'],links:{scholar:'#',website:'#'}},
+{id:'jmhuang',name:'黃俊明',title:'教授',office:'M402B',email:'jmhuang@ncut.edu.tw',ext:'6100',degree:'國立台灣科技大學 機械工程系 博士',research:'新產品開發管理、產品設計原理、TRIZ、產業技術地圖、產業實習專題、電腦輔助設計',img:'https://via.placeholder.com/320?text=黃俊明',courses:['產品設計','創新管理'],links:{scholar:'#',website:'#'}},
+{id:'jygiant',name:'黃嘉彥',title:'教授 / 終身特聘教授',office:'M412',email:'jygiant@ncut.edu.tw',ext:'7926',degree:'國立台灣大學 機械所 博士',research:'行銷與流通管理、專利分析、創新產品開發',img:'https://via.placeholder.com/320?text=黃嘉彥',courses:['行銷管理','創新產品開發'],links:{scholar:'#',website:'#'}}
+];
+const newsData=[
+{date:'114/05/21',title:'資管系實習說明會 13:00',category:'活動'},
+{date:'112/11/10',title:'CERPS E化優良系所公告',category:'公告'},
+{date:'112/09/01',title:'系所招生宣傳影片上線',category:'招生'},
+{date:'114/03/12',title:'教師研習活動公告',category:'公告'},
+{date:'114/01/15',title:'系友回饋問卷',category:'公告'},
+{date:'113/12/05',title:'學生專題成果展',category:'活動'}
+];
+
+const coursesData=[
+{name:'智慧物聯網',type:'必修',semester:'上學期',professor:'張裕幸',desc:'學習 IoT 系統整合與應用'},
+{name:'資料分析',type:'選修',semester:'下學期',professor:'張裕幸',desc:'學習資料清理與統計分析'},
+{name:'產品設計',type:'必修',semester:'上學期',professor:'黃俊明',desc:'產品設計流程與案例分析'},
+{name:'創新管理',type:'選修',semester:'下學期',professor:'黃俊明',desc:'創新產品策略與管理'},
+{name:'行銷管理',type:'必修',semester:'上學期',professor:'黃嘉彥',desc:'學習市場行銷策略與案例'},
+{name:'創新產品開發',type:'選修',semester:'下學期',professor:'黃嘉彥',desc:'創新產品開發流程'}
+];
+
+// --- Router ---
+function router(){
+const hash=location.hash||'#/';
+const content=document.getElementById('content-area');
+document.querySelectorAll('.nav-link').forEach(a=>a.classList.remove('active'));
+const active=document.querySelector(`a[href='${hash}']`);
+if(active) active.classList.add('active');
+if(hash==='#/'||hash==='#') renderHome(content);
+else if(hash.startsWith('#/about')) renderAbout(content);
+else if(hash.startsWith('#/faculty')){
+const parts=hash.split('/');
+if(parts.length===3 && parts[2]) renderProfessorDetail(content,parts[2]);
+else renderFacultyList(content);
+}
+else if(hash.startsWith('#/courses')) renderCourses(content);
+else if(hash.startsWith('#/news')) renderNewsPage(content);
+else if(hash.startsWith('#/contact')) renderContact(content);
+else renderNotFound(content);
+}
+
+// --- Render Functions ---
+function renderHome(container){
+container.innerHTML=`<div class="card"><h3>歡迎來到資訊管理系（模擬）</h3>
+<p style="color:var(--muted)">本網站為教學示範：包含師資名錄、個人詳細頁、課程與公告互動功能。</p></div>
+<div class="card">
+<h4>系上公告快覽</h4>
+<div class="carousel" id="news-carousel"><div class="carousel-slide"></div>
+<div class="carousel-controls"><button id="prev">&#10094;</button><button id="next">&#10095;</button></div></div>
+</div>
+<div class="card" style="margin-top:12px"><h4>系統統計</h4>
+<ul style="color:var(--muted)">
+<li>教授人數：${professors.length} 位</li>
+<li>課程數量：${coursesData.length} 門</li>
+<li>公告數量：${newsData.length} 則</li>
+</ul>
+</div>`;
+const slideDiv=document.querySelector('#news-carousel .carousel-slide');
+slideDiv.innerHTML=newsData.map(n=>`<div>[${n.date}] ${n.title}</div>`).join('');
+let index=0;
+function updateSlide(){slideDiv.style.transform=`translateX(-${index*100}%)`;}
+document.getElementById('prev').addEventListener('click',()=>{index=(index-1+newsData.length)%newsData.length;updateSlide();});
+document.getElementById('next').addEventListener('click',()=>{index=(index+1)%newsData.length;updateSlide();});
+updateSlide();
+}
+
+function renderAbout(container){
+container.innerHTML=`<div class="card"><h3>關於本系</h3>
+<p style="color:var(--muted)">本系致力於培育具備資訊系統分析、資料科學、資訊安全與企業應用能力的人才，並與業界合作。</p>
+<h4>歷史沿革</h4><p style="color:var(--muted)">成立於民國 87 年，至今已培育數千位資訊管理專業人才。</p>
+<h4>教學目標</h4><ul style="color:var(--muted)"><li>培養資料分析能力</li><li>掌握企業資訊系統運作</li><li>了解資訊安全與AI應用</li></ul></div>`;
+}
+
+function renderFacultyList(container){
+container.innerHTML=`<div class="card">
+<div class="faculty-toolbar">
+<div class="search"><input id="search-box" placeholder="搜尋教授姓名或專長（例如：人工智慧）"></div>
+<div><button class="btn" id="btn-reset">重設</button></div>
+</div>
+<div class="faculty-grid" id="faculty-grid"></div>
+</div>`;
+const grid=document.getElementById('faculty-grid');
+function makeCard(p){return `<div class="faculty-card" data-id="${p.id}">
+<img src="${p.img}" alt="${p.name}">
+<h4>${p.name}</h4>
+<p>${p.title}</p>
+<p style="font-size:13px;color:var(--muted)">${p.research.split('、').slice(0,3).join('、')}...</p>
+</div>`;}
+grid.innerHTML=professors.map(makeCard).join('');
+grid.querySelectorAll('.faculty-card').forEach(card=>{card.addEventListener('click',()=>{location.hash='#/faculty/'+card.getAttribute('data-id');});});
+document.getElementById('search-box').addEventListener('input',(e)=>{
+const q=e.target.value.toLowerCase();
+const filtered=professors.filter(p=>(p.name+p.title+p.research+p.office).toLowerCase().includes(q));
+grid.innerHTML=filtered.map(makeCard).join('')||'<div style="padding:18px;color:var(--muted)">找不到符合的教授</div>';
+grid.querySelectorAll('.faculty-card').forEach(card=>{card.addEventListener('click',()=>{location.hash='#/faculty/'+card.getAttribute('data-id');});});
+});
+document.getElementById('btn-reset').addEventListener('click',()=>{
+document.getElementById('search-box').value='';
+grid.innerHTML=professors.map(makeCard).join('');
+grid.querySelectorAll('.faculty-card').forEach(card=>{card.addEventListener('click',()=>{location.hash='#/faculty/'+card.getAttribute('data-id');});});
+});
+}
+
+function renderProfessorDetail(container,id){
+const p=professors.find(x=>x.id===id);
+if(!p){renderNotFound(container);return;}
+container.innerHTML=`<div class="card detail">
+<div class="back-link" onclick="location.hash='#/faculty'">← 回師資列表</div>
+<div class="detail-header">
+<img src="${p.img}" alt="${p.name}">
+<div class="meta">
+<h2 style="margin:0">${p.name} <span style="color:var(--muted);font-size:16px">${p.title}</span></h2>
+<p><b>辦公室：</b>${p.office}</p>
+<p><b>信箱：</b><a href="mailto:${p.email}">${p.email}</a></p>
+<p><b>分機：</b>${p.ext}</p>
+<p><b>學歷：</b>${p.degree}</p>
+<p><b>研究方向：</b> ${p.research}</p>
+<p><b>授課課程：</b> ${p.courses.join('、')}</p>
+<p><b>相關連結：</b> 
+<a href="${p.links.website}" target="_blank">個人網站</a> | 
+<a href="${p.links.scholar}" target="_blank">Google Scholar</a>
+</p>
+<div style="margin-top:12px">
+<button class="btn" onclick="location.hash='#/faculty'"><- 回列表</button>
+<a href="mailto:${p.email}?subject=諮詢：${encodeURIComponent(p.name)}教授" class="btn" style="background:#2d9cdb;margin-left:8px">寄信給教授</a>
+</div></div></div></div>`;
+}
+
+function renderCourses(container){
+container.innerHTML=`<div class="card"><h3>課程列表</h3>
+<table>
+<tr><th>課程名稱</th><th>類型</th><th>學期</th><th>授課教授</th><th>簡介</th></tr>
+${coursesData.map(c=>`<tr><td>${c.name}</td><td>${c.type}</td><td>${c.semester}</td><td>${c.professor}</td><td>${c.desc}</td></tr>`).join('')}
+</table></div>`;
+}
+
+function renderNewsPage(container){
+container.innerHTML=`<div class="card"><h3>系上公告</h3>
+<div id="news-list">
+${newsData.map(n=>`<div style="margin-bottom:8px"><b>[${n.category}] ${n.date}</b> ${n.title}</div>`).join('')}
+</div></div>`;
+}
+
+function renderContact(container){
+container.innerHTML=`<div class="card"><h3>聯絡我們</h3>
+<form id="contact-form">
+<p><input type="text" placeholder="姓名" required style="width:100%;padding:8px;margin-bottom:8px"></p>
+<p><input type="email" placeholder="Email" required style="width:100%;padding:8px;margin-bottom:8px"></p>
+<p><input type="text" placeholder="主題" required style="width:100%;padding:8px;margin-bottom:8px"></p>
+<p><textarea placeholder="訊息內容" required style="width:100%;padding:8px;margin-bottom:8px" rows="6"></textarea></p>
+<p><button class="btn" type="submit">送出訊息</button></p>
+<p id="contact-msg" style="color:green;"></p>
+</form></div>`;
+document.getElementById('contact-form').addEventListener('submit',e=>{
+e.preventDefault();
+document.getElementById('contact-msg').textContent='訊息已送出（模擬）';
+document.getElementById('contact-form').reset();
+});
+}
+
+function renderNotFound(container){container.innerHTML=`<div class="card"><h3>頁面不存在</h3></div>`;}
+
+window.addEventListener('hashchange',router);
+window.addEventListener('load',router);
+</script>
+</body>
+</html>
